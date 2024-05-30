@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmidp4a77hsag"]
+
+[ext_resource type="Texture2D" uid="uid://diwjqgf4pdcdl" path="res://Asset/kenney_pixel-platformer/Tilemap/tilemap-characters_packed.png" id="1_j7qgi"]
+[ext_resource type="Script" path="res://Scene/Player.gd" id="1_y7dfj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq2ru"]
+atlas = ExtResource("1_j7qgi")
+region = Rect2(96, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7omm"]
+atlas = ExtResource("1_j7qgi")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_58xxh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq2ru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7omm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmumf"]
+size = Vector2(20, 24)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_y7dfj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_58xxh")
+autoplay = "default"
+frame_progress = 0.811876
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_cmumf")
